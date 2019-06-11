@@ -7,8 +7,8 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/<name>')
 def index(name='Mundo'):
-    name = request.args.get('name', name)
-    return "Holas {}".format(name)
+    context = {'name': name}
+    return render_template('index.html',**context);
 
 
 @app.route('/add/<float:num1>/<float:num2>')
