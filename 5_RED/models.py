@@ -1,10 +1,12 @@
 import datetime
 
+from flask_login import UserMixin
 from peewee import *
 
 DATABASE = SqliteDatabase('social.db')
 
-class User(Model):
+#mixin = una clase que esta diseña con el unico proposito de agregar funcionalidad a otras clases
+class User(UserMixin, Model):
     username: CharField(unique=True)
     email:  CharField(unique=True)
     password: CharField(max_length=120)
